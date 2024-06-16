@@ -1,10 +1,12 @@
 <?php
 require_once '../models/Category_Model.php';
 require_once '../models/Subcategory_Model.php';
+require_once '../models/Utils.php';
 use models\Category_Model;
 use models\Subcategory_Model;
-class Category_Controller {
+use models\Utils;
 
+class Category_Controller {
     public function __construct() {
         session_start();
         if (!isset($_SESSION['user_id']) || ($_SESSION['rol'] != 'empleado' && $_SESSION['rol'] != 'admin')) {
@@ -12,52 +14,68 @@ class Category_Controller {
             exit();
         }
     }
+
     public function listCategories() {
-        $role =  $_SESSION['rol'];
+        $role = $_SESSION['rol'];
         $categoryModel = new Category_Model();
-        $subcategyModel = new Subcategory_Model();
-    
+        $subcategoryModel = new Subcategory_Model();
+
         $categories = $categoryModel->getAllCategories();
-        $subcategories = $subcategyModel->getAllSubcategories();
+        $subcategories = $subcategoryModel->getAllSubcategories();
         require_once '../views/category/category_subcategory_view.php';
     }
 
     public function createCategory() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $categoryModel = new Category_Model();
-            $name = $_POST['category_name'];
-            $categoryModel->createCategory($name);
-            header('Location: Category_Controller.php?action=listCategories');
+            if (isset($_POST['category_name'])) {
+                $categoryModel = new Category_Model();
+                $name = Utils::limpiar_datos($_POST['category_name']);
+                $categoryModel->createCategory($name);
+                header('Location: Category_Controller.php?action=listCategories');
+            } else {
+                echo 'El nombre de la categoría es obligatorio';
+            }
         }
     }
 
     public function editCategory() {
-        $role =  $_SESSION['rol'];
+        $role = $_SESSION['rol'];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $categoryModel = new Category_Model();
-            $id = $_POST['id'];
-            $name = $_POST['category_name'];
-            $categoryModel->updateCategory($id, $name);
-            header('Location: Category_Controller.php?action=listCategories');
+            if (isset($_POST['id']) && isset($_POST['category_name'])) {
+                $categoryModel = new Category_Model();
+                $id = Utils::limpiar_datos($_POST['id']);
+                $name = Utils::limpiar_datos($_POST['category_name']);
+                $categoryModel->updateCategory($id, $name);
+                header('Location: Category_Controller.php?action=listCategories');
+            } else {
+                echo 'Todos los campos son obligatorios';
+            }
         } else {
-            $id = $_GET['id'];
-            $categoryModel = new Category_Model();
-            $category =  $categoryModel->getCategoryById($id);
-            require_once '../views/category/category_form_view.php';
+            if (isset($_GET['id'])) {
+                $id = Utils::limpiar_datos($_GET['id']);
+                $categoryModel = new Category_Model();
+                $category = $categoryModel->getCategoryById($id);
+                require_once '../views/category/category_form_view.php';
+            } else {
+                echo 'ID de categoría no especificado';
+            }
         }
     }
 
     public function deleteCategory() {
-        $categoryModel = new Category_Model();
-        $id = $_GET['id'];
-        $categoryModel->deleteCategory($id);
-        header('Location: Category_Controller.php?action=listCategories');
+        if (isset($_GET['id'])) {
+            $categoryModel = new Category_Model();
+            $id = Utils::limpiar_datos($_GET['id']);
+            $categoryModel->deleteCategory($id);
+            header('Location: Category_Controller.php?action=listCategories');
+        } else {
+            echo 'ID de categoría no especificado';
+        }
     }
-
 }
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $categoryController = new Category_Controller();
     switch ($action) {
         case 'listCategories':
@@ -73,10 +91,9 @@ if (isset($_GET['action'])) {
             $categoryController->deleteCategory();
             break;
         default:
-        $categoryController->listCategories();
+            $categoryController->listCategories();
             break;
     }
 } else {
     //echo 'No se especificó ninguna acción';
 }
-

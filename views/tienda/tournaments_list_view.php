@@ -49,6 +49,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../Assets/js/menu_main.js"></script>
+    <script src="../Assets/js/carrito.js"></script>
     <script src="../Assets/js/events.js"></script>
 </body>
 

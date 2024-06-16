@@ -3,8 +3,10 @@
 namespace controller;
 
 require_once '../models/Order_Model.php';
+require_once '../models/Utils.php';
 
 use models\Order_Model;
+use models\Utils;
 
 class OrderController
 {
@@ -24,7 +26,7 @@ class OrderController
         $role = $_SESSION['rol'];
         $orderModel = new Order_Model();
         $limit = 10; // Número de pedidos por página
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = isset($_GET['page']) ? (int)Utils::limpiar_datos($_GET['page']) : 1;
         $start = ($page - 1) * $limit;
 
         $total_orders = $orderModel->getTotalOrders();
@@ -39,23 +41,23 @@ class OrderController
     {
         $role = $_SESSION['rol'];
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-            $orderId = $_GET['id'];
+            $orderId = Utils::limpiar_datos($_GET['id']);
             $orderModel = new Order_Model();
 
             $order = $orderModel->getOrderById($orderId);
 
             require_once '../views/order/edit_order_view.php';
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $orderId = $_POST['id'];
+            $orderId = Utils::limpiar_datos($_POST['id']);
             $orderData = [
-                'Direccion' => $_POST['direccion'],
-                'Pais' => $_POST['pais'],
-                'Region' => $_POST['region'],
-                'Ciudad' => $_POST['ciudad'],
-                'Codigo_Postal' => $_POST['codigo_postal'],
-                'Notas' => $_POST['notas'],
-                'Total' => $_POST['total'],
-                'Estado' => $_POST['estado']
+                'Direccion' => Utils::limpiar_datos($_POST['direccion']),
+                'Pais' => Utils::limpiar_datos($_POST['pais']),
+                'Region' => Utils::limpiar_datos($_POST['region']),
+                'Ciudad' => Utils::limpiar_datos($_POST['ciudad']),
+                'Codigo_Postal' => Utils::limpiar_datos($_POST['codigo_postal']),
+                'Notas' => Utils::limpiar_datos($_POST['notas']),
+                'Total' => Utils::limpiar_datos($_POST['total']),
+                'Estado' => Utils::limpiar_datos($_POST['estado'])
             ];
 
             $orderModel = new Order_Model();
@@ -74,10 +76,10 @@ class OrderController
     public function updateOrder()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $orderId = $_POST['id'];
-            $status = $_POST['status'];
-            $address = $_POST['address'];
-            $notes = $_POST['notes'];
+            $orderId = Utils::limpiar_datos($_POST['id']);
+            $status = Utils::limpiar_datos($_POST['status']);
+            $address = Utils::limpiar_datos($_POST['address']);
+            $notes = Utils::limpiar_datos($_POST['notes']);
 
             $orderModel = new Order_Model();
             $orderModel->updateOrder($orderId, $status, $address, $notes);
@@ -89,7 +91,7 @@ class OrderController
     public function deleteOrder()
     {
         if (isset($_POST['id'])) {
-            $orderId = $_POST['id'];
+            $orderId = Utils::limpiar_datos($_POST['id']);
 
             $orderModel = new Order_Model();
             $orderModel->deleteOrder($orderId);
@@ -101,7 +103,7 @@ class OrderController
 
 // Manejo de acciones basadas en los parámetros de URL
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $orderController = new OrderController();
 
     switch ($action) {

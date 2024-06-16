@@ -26,6 +26,7 @@ class ContactController {
         
         $categories = $categoryModel->getAllCategories();
         $subcategories = $subcategoryModel->getAllSubcategories();
+        
         // Verificar si el usuario está logueado y obtener la información del usuario
         $usuario = null;
         if (isset($_SESSION['user_id'])) {
@@ -36,12 +37,12 @@ class ContactController {
 
     public function send() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $subject = htmlspecialchars($_POST['subject']);
-            $message = htmlspecialchars($_POST['message']);
+            $subject = Utils::limpiar_datos($_POST['subject']);
+            $message = Utils::limpiar_datos($_POST['message']);
             
             if (isset($_SESSION['user_id'])) {
                 $userModel = new User_Model();
-                $usuario = $userModel->getUserById($_SESSION['user_id']);
+                $usuario = $userModel->getUserById(Utils::limpiar_datos($_SESSION['user_id']));
                 
                 if ($usuario) {
                     $userName = $usuario['Nombre'];
@@ -63,7 +64,7 @@ class ContactController {
 }
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $contactController = new ContactController();
 
     switch ($action) {
@@ -80,4 +81,5 @@ if (isset($_GET['action'])) {
 } else {
     echo 'No se especificó ninguna acción';
 }
+
 

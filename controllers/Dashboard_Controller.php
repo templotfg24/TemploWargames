@@ -4,9 +4,11 @@ namespace controller;
 require_once '../models/User_Model.php';
 require_once '../models/Order_Model.php';
 require_once '../models/Product_Model.php';
+require_once '../models/Utils.php';
 use models\User_Model;
 use models\Order_Model;
 use models\Product_Model;
+use models\Utils;
 
 class DashController {
     public function __construct() {
@@ -25,7 +27,7 @@ class DashController {
         $orderModel = new Order_Model();
         $productModel = new Product_Model();
 
-        $role = $_SESSION['rol'];
+        $role = Utils::limpiar_datos($_SESSION['rol']);
         // Obtener datos para mostrar en el dashboard
         $userCount = $userModel->getUserCount();
         $clientCount = $userModel->getClientCount();
@@ -48,7 +50,7 @@ class DashController {
 
 // Manejo de acciones basadas en los parámetros de URL
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $dashboardController = new DashController();
 
     switch ($action) {

@@ -185,6 +185,16 @@ class Product_Model {
             return [];
         }
     }
+    public function isProductInOrder($productId) {
+        $query = "SELECT COUNT(*) as count FROM pedidos_productos WHERE ID_Producto = :product_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':product_id', $productId);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'] > 0;
+    }
+    
+    
 }
 
 

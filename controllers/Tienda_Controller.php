@@ -2,7 +2,6 @@
 
 namespace controller;
 
-
 require_once '../models/Product_Model.php';
 require_once '../models/Category_Model.php';
 require_once '../models/Subcategory_Model.php';
@@ -26,6 +25,7 @@ class TiendaController
             session_start();
         }
     }
+
     public function listLastFiveProducts()
     {
         $productModel = new Product_Model();
@@ -45,7 +45,7 @@ class TiendaController
             $productModel = new Product_Model();
             $categoryModel = new Category_Model();
             $subcategoryModel = new Subcategory_Model();
-            $producto = $productModel->getProductById($_GET['id']);
+            $producto = $productModel->getProductById(Utils::limpiar_datos($_GET['id']));
             $categoriesById = $categoryModel->getCategoryById($producto['category_id']);
             $subcategoriesById = $subcategoryModel->getSubcategoryById($producto['subcategory_id']);
             $categories = $categoryModel->getAllCategories();
@@ -60,7 +60,7 @@ class TiendaController
 
     public function listProducts()
     {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = isset($_GET['page']) ? (int) Utils::limpiar_datos($_GET['page']) : 1;
         $items_per_page = 9;
 
         $productModel = new Product_Model();
@@ -71,8 +71,8 @@ class TiendaController
         $total_products = $productModel->getProductCount();
         $totalPages = ceil($total_products / $items_per_page);
 
-        $categoryId = isset($_GET['category']) ? (int)$_GET['category'] : null;
-        $subcategoryId = isset($_GET['subcategory']) ? (int)$_GET['subcategory'] : null;
+        $categoryId = isset($_GET['category']) ? (int) Utils::limpiar_datos($_GET['category']) : null;
+        $subcategoryId = isset($_GET['subcategory']) ? (int) Utils::limpiar_datos($_GET['subcategory']) : null;
 
         $categories = $categoryModel->getAllCategories();
         $subcategories = $subcategoryModel->getAllSubcategories();
@@ -96,15 +96,15 @@ class TiendaController
     public function inscripcionTorneo()
     {
         $tournamentModel = new Tournament_Model();
-        $tournamentId = $_GET['id'];
+        $tournamentId = Utils::limpiar_datos($_GET['id']);
         $tournament = $tournamentModel->getTournamentById($tournamentId);
     
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userId = $_SESSION['user_id'];
             $email = $_SESSION['email'];
-            $applicationId = htmlspecialchars($_POST['applicationId']);
-            $phoneCode = htmlspecialchars($_POST['phoneCode']);
-            $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
+            $applicationId = Utils::limpiar_datos($_POST['applicationId']);
+            $phoneCode = Utils::limpiar_datos($_POST['phoneCode']);
+            $phoneNumber = Utils::limpiar_datos($_POST['phoneNumber']);
             $fullPhoneNumber = $phoneCode . $phoneNumber;
     
             $data = [
@@ -141,7 +141,7 @@ class TiendaController
 
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $tiendaController = new TiendaController();
 
     switch ($action) {

@@ -1,8 +1,11 @@
 <?php
 require_once '../models/Category_Model.php';
 require_once '../models/Subcategory_Model.php';
+require_once '../models/Utils.php';
+
 use models\Category_Model;
 use models\Subcategory_Model;
+use models\Utils;
 
 class Subcategory_Controller
 {
@@ -13,12 +16,13 @@ class Subcategory_Controller
             exit();
         }
     }
+
     public function createSubcategory()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $subcategyModel = new Subcategory_Model();
-            $name = $_POST['subcategory_name'];
-            $category_id = $_POST['category_id'];
+            $name = Utils::limpiar_datos($_POST['subcategory_name']);
+            $category_id = Utils::limpiar_datos($_POST['category_id']);
             $subcategyModel->createSubcategory($name, $category_id);
             header('Location: Category_Controller.php?action=listCategories');
         }
@@ -29,14 +33,14 @@ class Subcategory_Controller
         $role = $_SESSION['rol'];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $subcategyModel = new Subcategory_Model();
-            $id = $_POST['id'];
-            $name = $_POST['subcategory_name'];
-            $category_id = $_POST['category_id'];
+            $id = Utils::limpiar_datos($_POST['id']);
+            $name = Utils::limpiar_datos($_POST['subcategory_name']);
+            $category_id = Utils::limpiar_datos($_POST['category_id']);
             $subcategyModel->updateSubcategory($id, $category_id, $name);
             header('Location: Category_Controller.php?action=listCategories');
         } else {
             $subcategyModel = new Subcategory_Model();
-            $id = $_GET['id'];
+            $id = Utils::limpiar_datos($_GET['id']);
             $categoryModel = new Category_Model();
             $categories = $categoryModel->getAllCategories();
             $subcategory = $subcategyModel->getSubcategoryById($id);
@@ -47,14 +51,14 @@ class Subcategory_Controller
     public function deleteSubcategory()
     {
         $subcategyModel = new Subcategory_Model();
-        $id = $_GET['id'];
+        $id = Utils::limpiar_datos($_GET['id']);
         $subcategyModel->deleteSubcategory($id);
         header('Location: Category_Controller.php?action=listCategories');
     }
 }
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $subcategoryController = new Subcategory_Controller();
 
     switch ($action) {
@@ -74,4 +78,3 @@ if (isset($_GET['action'])) {
 } else {
     //echo 'No se especificó ninguna acción';
 }
-

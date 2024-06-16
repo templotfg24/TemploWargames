@@ -18,7 +18,7 @@
     <div class="container mt-5">
         <h1>Contacto</h1>
         <!-- Formulario de contacto -->
-        <form action="../controllers/Contact_Controller.php?action=send" method="POST">
+        <form id="contactForm" action="../controllers/Contact_Controller.php?action=send" method="POST">
             <div class="mb-3">
                 <label for="subject" class="form-label">Asunto</label>
                 <input type="text" class="form-control" id="subject" name="subject" required>
@@ -32,6 +32,11 @@
     </div>
     <!-- Inclusión de Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Inclusión de la validación de formulario -->
+    <script src="../Assets/js/validation_contact_view.js"></script>
+    <script src="../Assets/js/menu_main.js"></script>
+    <script src="../Assets/js/carrito.js"></script>
+
     <!-- Inclusión del pie de página -->
     <?php include '../views/includes/footer.php';?>
 </body>

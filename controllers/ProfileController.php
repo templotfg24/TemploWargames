@@ -8,6 +8,7 @@ require_once '../models/Category_Model.php';
 require_once '../models/Subcategory_Model.php';
 require_once '../models/User_Model.php';
 require_once '../models/Inscripcion_Model.php';
+require_once '../models/Utils.php';
 
 use models\Order_Model;
 use models\OrderProduct_Model;
@@ -15,6 +16,7 @@ use models\Category_Model;
 use models\Subcategory_Model;
 use models\User_Model;
 use models\Inscripcion_Model;
+use models\Utils;
 
 class ProfileController
 {
@@ -43,13 +45,13 @@ class ProfileController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userId = $_SESSION['user_id'];
-            $nombre = $_POST['nombre'];
-            $email = $_POST['email'];
-            $telefono = $_POST['telefono'];
+            $nombre = Utils::limpiar_datos($_POST['nombre']);
+            $email = Utils::limpiar_datos($_POST['email']);
+            $telefono = Utils::limpiar_datos($_POST['telefono']);
             $imagenPerfil = null;
 
             if (isset($_FILES['imagen_perfil']) && $_FILES['imagen_perfil']['error'] === UPLOAD_ERR_OK) {
-                $imagenPerfil = basename($_FILES['imagen_perfil']['name']);
+                $imagenPerfil = basename(Utils::limpiar_datos($_FILES['imagen_perfil']['name']));
                 $targetDir = "../Assets/images/uploads/";
                 $targetFile = $targetDir . $imagenPerfil;
                 move_uploaded_file($_FILES['imagen_perfil']['tmp_name'], $targetFile);
@@ -70,13 +72,11 @@ class ProfileController
         }
     }
 
-
-
     public function updateAddress()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userId = $_SESSION['user_id'];
-            $direccion = $_POST['direccion'];
+            $direccion = Utils::limpiar_datos($_POST['direccion']);
 
             $userModel = new User_Model();
             $userModel->updateUserAddress($userId, $direccion);
@@ -89,9 +89,9 @@ class ProfileController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userId = $_SESSION['user_id'];
-            $currentPassword = $_POST['current_password'];
-            $newPassword = $_POST['new_password'];
-            $confirmPassword = $_POST['confirm_password'];
+            $currentPassword = Utils::limpiar_datos($_POST['current_password']);
+            $newPassword = Utils::limpiar_datos($_POST['new_password']);
+            $confirmPassword = Utils::limpiar_datos($_POST['confirm_password']);
 
             $userModel = new User_Model();
             $user = $userModel->getUserById($userId);
@@ -142,12 +142,11 @@ class ProfileController
     public function deleteInscription() {
         $inscripcionModel = new Inscripcion_Model();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
+            $id = Utils::limpiar_datos($_POST['id']);
             $inscripcionModel->deleteInscripcion($id);
             echo 'Inscripción eliminada exitosamente.';
         }
     }
-    
 
     private function getUser()
     {
@@ -166,15 +165,10 @@ class ProfileController
         $userModel = new User_Model();
         return $userModel->getUserById($userId);
     }
-
-    private function getMyInscriptions($userId)
-    {
-        return [];
-    }
 }
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+    $action = Utils::limpiar_datos($_GET['action']);
     $profileController = new ProfileController();
 
     switch ($action) {
@@ -199,11 +193,11 @@ if (isset($_GET['action'])) {
         case 'deleteInscription':
             $profileController->deleteInscription();
             break;
-
         default:
             echo 'Acción no válida';
             break;
     }
 } else {
-    //echo 'No se especificó ninguna acción';
+    echo 'No se especificó ninguna acción';
 }
+
