@@ -1,0 +1,104 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F2F2F2;
+    color: #252525;
+    min-width: 770px !important;
+    max-width: 150% !important;
+    margin: 0 auto !important;
+
+
+}
+
+.hero-section {
+    background-image: url("../images/JPG/Backgound_Warhammer_Header.jpg");
+    position: relative;
+    text-align: left;
+    color: white;
+    padding: 50px 20px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 400px;
+    transition: background-image 1s ease-in-out, height 1s ease-in-out, padding 1s ease-in-out;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin-left: 250px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: font-size 1s ease-in-out;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: font-size 1s ease-in-out;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+    transition: gap 1s ease-in-out;
+}
+
+.hero-buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, width 1s ease-in-out, height 1s ease-in-out;
+}
+
+.hero-buttons img {
+    width: 60%;
+    height: auto;
+    cursor: pointer;
+}
+
+.hero-buttons a.active {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-image {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    max-height: 100%;
+    width: auto;
+    z-index: 1;
+    transition: left 1s ease-in-out;
+}
+
+.additional-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 845px;
+    max-height: 100%;
+    width: auto;
+    border-radius: 15px 0px 0px 15px;
+    z-index: 1;
+    transition: left 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        display: none;
+    }
+}
+

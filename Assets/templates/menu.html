@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemploWargames - Tu tienda de juegos en Internet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F2F2F2;
+            color: #252525;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            margin: 0 50px;
+            position: relative;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+        }
+
+        .search-bar button.btn-search {
+            padding: 10px 20px;
+            background-color: #FF4F11;
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info button {
+            background: none;
+            border: none;
+            color: #252525;
+            cursor: pointer;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .user-info img {
+            height: 30px;
+            margin-right: 8px;
+        }
+
+        .menu-bar {
+            background-color: #252525;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-bar .navbar-nav .nav-link {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: background-color 0.3s ease, opacity 0.3s ease, border-radius 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .menu-bar .navbar-nav .nav-link:hover {
+            background-color: #FF4F11;
+            opacity: 0.7;
+        }
+
+        .dropdown-menu a {
+            color: #252525;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #FF4F11;
+            color: white;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-top">
+        <div class="logo">
+            <img src="../images/JPG/logo_nobackground.png" alt="Logo TemploWargames">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar en toda la tienda...">
+            <button class="btn-search">Buscar</button>
+        </div>
+        <div class="user-info">
+            <button class="btn-cart">
+                <img src="../images/PNG/3144456.png" alt="Carrito">
+                Mi Cesta
+            </button>
+            <button class="btn-account">
+                <img src="../images/PNG/account.png" alt="Cuenta">
+                Hola! Entrar
+            </button>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark menu-bar">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="novedadesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            NOVEDADES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="novedadesDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ofertasDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            OFERTAS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ofertasDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="juegosTableroDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            JUEGOS DE TABLERO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="juegosTableroDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="juegosRolDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            JUEGOS DE ROL
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="juegosRolDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="miniaturasDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            MINIATURAS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="miniaturasDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="juegosInfantilesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            JUEGOS INFANTILES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="juegosInfantilesDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="wargamesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            WARGAMES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="wargamesDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="juegosCartasDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            JUEGOS DE CARTAS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="juegosCartasDropdown">
+                            <li><a class="dropdown-item" href="#subcat1">Subcategoría 1</a></li>
+                            <li><a class="dropdown-item" href="#subcat2">Subcategoría 2</a></li>
+                            <li><a class="dropdown-item" href="#subcat3">Subcategoría 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Aquí el resto del contenido de tu página -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

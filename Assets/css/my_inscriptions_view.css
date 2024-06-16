@@ -1,0 +1,24 @@
+/* my_inscriptions_view.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .inscription-details {
+    display: none;
+  }
+  
+  .table .inscription-header {
+    cursor: pointer;
+  }
+  
+  #page-content-wrapper {
+    padding-left: 250px;
+    width: calc(100% - 250px);
+  }
+  
+  .container-fluid {
+    max-width: 100%;
+    margin: auto;
+  }
+  

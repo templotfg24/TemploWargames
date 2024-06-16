@@ -1,0 +1,119 @@
+.carousel-thumbnails .carousel-indicators img {
+    max-width: 80%;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.carousel-thumbnails .carousel-indicators .active img {
+    opacity: 1;
+}
+
+.carousel-indicators {
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.carousel-indicators [data-bs-target] {
+    padding: 2px;
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 50px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: 0px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+}
+
+.nav-tabs .nav-link {
+    margin-right: 5px;
+    padding: 10px 15px;
+}
+
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.rating-bar-container .progress {
+    height: 20px;
+}
+
+.rating-bar-container .progress-bar {
+    background-color: #ffc107;
+}
+
+.customer-feedback .card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
+}
+
+.btn-primary {
+    border-color: #FF6600;
+    color: #FFF;
+    background-color: #FF6600;
+}
+
+.btn-success {
+    border-color: #FF6600;
+    color: #FF6600;
+    background-color: transparent;
+    /* Asegura que el fondo sea transparente */
+}
+
+.btn-success:hover,
+.btn-primary:hover {
+    background-color: #E65C00;
+    color: #FFF;
+}
+
+/* Estilos para botones deshabilitados */
+.btn-primary:disabled {
+    background-color: #FF6600;
+    border-color: #FF6600;
+    color: #FFF;
+    opacity: 0.65; /* Para hacer notar que está deshabilitado */
+}
+
+.btn-success:disabled {
+    background-color: transparent;
+    border-color: #FF6600;
+    color: #FF6600;
+    opacity: 0.65; /* Para hacer notar que está deshabilitado */
+}
+
+@media (max-width: 768px) {
+    .img-fluid {
+        margin-bottom: 20px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .carousel-indicators {
+        justify-content: flex-start;
+        margin: -10px;
+        padding: 0 0 0 20px;
+    }
+
+    div.col-md-4 {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    h3,
+    p {
+        margin: 5px 0;
+    }
+}

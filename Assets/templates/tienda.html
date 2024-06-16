@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemploWargames - Tu tienda de juegos en Internet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F2F2F2;
+            color: #252525;
+        }
+        .hero-section {
+            background-image: url("../images/JPG/Backgound_Warhammer_Header.jpg");
+            position: relative;
+            text-align: left;
+            color: white;
+            padding: 50px 20px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            height: 400px;
+            transition: background-image 1s ease-in-out, height 1s ease-in-out, padding 1s ease-in-out; /* Añade transición */
+        }
+        .hero-content {
+            max-width: 600px;
+            margin-left: 250px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            transition: font-size 1s ease-in-out; /* Añade transición */
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            transition: font-size 1s ease-in-out; /* Añade transición */
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+            transition: gap 1s ease-in-out; /* Añade transición */
+        }
+        .hero-buttons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: background-color 0.3s ease, width 1s ease-in-out, height 1s ease-in-out; /* Añade transición */
+        }
+        .hero-buttons img {
+            width: 60%;
+            height: auto;
+            cursor: pointer;
+        }
+        .hero-buttons a.active {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        .hero-image {
+            position: absolute;
+            bottom: 0;
+            left: -50px;
+            max-height: 100%;
+            width: auto;
+            z-index: 1;
+            transition: left 1s ease-in-out; /* Añade transición */
+        }
+        .additional-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 845px;
+            max-height: 100%;
+            width: auto;
+            border-radius: 15px 0px 0px 15px;
+            z-index: 1;
+            transition: left 1s ease-in-out; /* Añade transición */
+        }
+    </style>
+</head>
+<body>
+    <div class="container hero-section" id="hero-section">
+        <img src="../images/PNG/DarkAngles_noBackground.png" alt="Imagen Hero" class="hero-image" id="hero-image">
+        <div class="hero-content">
+            <h1>¡Bienvenido al Templo!</h1>
+            <p id="hero-text">Nuestra tienda de pasatiempos ofrece kits de modelos, juegos de mesa, productos de Games Workshop, coleccionables, herramientas de modelismo, rompecabezas, juegos de cartas y más.</p>
+            <div class="hero-buttons">
+                <a href="#explorar" id="btn-warhammer"><img src="../images/PNG/Warhammer-logo.png" alt="Warhammer-logo"></a>
+                <a href="#contacto" id="btn-starwars"><img src="../images/PNG/star-wars-logo.png" alt="star-wars-logo"></a>
+                <a href="#ofertas" id="btn-marvel"><img src="../images/PNG/marvel-logo.png" alt="marvel-logo"></a>
+                <a href="#novedades" id="btn-hielofuego"><img src="../images/PNG/logo-cancion-hielo-fuego-1.png" alt="logo-cancion-hielo-fuego-logo"></a>
+            </div>
+        </div>
+        <img src="../images/JPG/freak_wars_warhammer-1000x600.jpg" alt="Mesas de la tienda" class="additional-image" id="additional-image">
+    </div>
+
+    <script>
+        document.getElementById('btn-warhammer').addEventListener('click', function() {
+            updateHeroSection(
+                "../images/JPG/Backgound_Warhammer_Header.jpg",
+                "../images/PNG/DarkAngles_noBackground.png",
+                "Nuestra tienda de pasatiempos ofrece kits de modelos, juegos de mesa, productos de Games Workshop, coleccionables, herramientas de modelismo, rompecabezas, juegos de cartas y más.",
+                "../images/JPG/freak_wars_warhammer-1000x600.jpg"
+            );
+            setActiveButton(this);
+        });
+
+        document.getElementById('btn-starwars').addEventListener('click', function() {
+            updateHeroSection(
+                "../images/JPG/d32eca36396d48a4d4e6f79388d7f27a.jpg",
+                "../images/WEBP/Grievous_SWCEUE.webp",
+                "Explora la galaxia con nuestros productos de Star Wars, desde figuras coleccionables hasta juegos de mesa épicos.",
+                "../images/JPG/3505daec-e6d5-43e8-8708-bfa5cbefd97d.jpg"
+            );
+            setActiveButton(this);
+        });
+
+        document.getElementById('btn-marvel').addEventListener('click', function() {
+            updateHeroSection(
+                "../images/WEBP/Marvel_fondo.webp",
+                "../images/PNG/captain.png",
+                "Descubre el universo Marvel con nuestra colección de cómics, figuras de acción y juegos de mesa.",
+                "../images/JPG/34837057-20220219_180012-999.jpg"
+            );
+            setActiveButton(this);
+        });
+
+        document.getElementById('btn-hielofuego').addEventListener('click', function() {
+            updateHeroSection(
+                "../images/JPG/683048.jpg",
+                "../images/WEBP/Casa_Stark_escudo.webp",
+                "Sumérgete en el mundo de Canción de Hielo y Fuego con nuestras figuras, juegos y productos exclusivos.",
+                "../images/JPG/IMG_4726.JPEG"
+            );
+            setActiveButton(this);
+        });
+
+        function updateHeroSection(backgroundImage, heroImage, heroText, additionalImage) {
+            document.getElementById('hero-section').style.backgroundImage = `url(${backgroundImage})`;
+            document.getElementById('hero-image').src = heroImage;
+            document.getElementById('hero-text').textContent = heroText;
+            document.getElementById('additional-image').src = additionalImage;
+        }
+
+        function setActiveButton(activeButton) {
+            document.querySelectorAll('.hero-buttons a').forEach(button => button.classList.remove('active'));
+            activeButton.classList.add('active');
+        }
+    </script>
+</body>
+</html>

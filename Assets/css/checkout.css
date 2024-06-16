@@ -1,0 +1,89 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #252525;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.form-section,
+.order-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.btn-orange {
+    background-color: #F24F17;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.btn-orange:hover {
+    background-color: #e64a19;
+}
+
+h4 {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+label,
+input,
+select,
+textarea {
+    font-size: 16px;
+}
+
+.form-check-label {
+    font-size: 16px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-item img {
+    margin-right: 10px;
+}
+
+.order-summary {
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.payment-option img {
+    width: 40px;
+    margin-bottom: 4px;
+}
+
+.form-check-input {
+    margin-top: 0;
+    width: 1.25em;
+    height: 1.25em;
+    cursor: pointer;
+}

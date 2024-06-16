@@ -1,0 +1,27 @@
+/* contact_view.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.btn-primary {
+    border-color: #FF6600;
+    color: #FFF;
+    background-color: #FF6600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #E65C00;
+    border-color: #E65C00;
+    color: #FFF;
+}

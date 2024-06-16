@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caballero Castigador Cerastus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-thumbnails .carousel-indicators img {
+            max-width: 100%;
+            /* Asegura que las imágenes no se desborden */
+            opacity: 0.8;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .carousel-thumbnails .carousel-indicators .active img {
+            opacity: 1;
+            /* Opacidad completa para el indicador activo */
+        }
+
+        .carousel-indicators {
+            justify-content: flex-start;
+            /* Alinea los indicadores al inicio */
+            margin: 0;
+            padding: 0 0 0 20px;
+            /* Ajustes de espacio */
+        }
+
+        .carousel-indicators [data-bs-target] {
+            padding: 2px;
+            /* Ajuste según necesites */
+            box-sizing: content-box;
+            /* Asegura que el padding y border no afecten el ancho final */
+            flex: 0 1 auto;
+            /* Permite que el elemento sea flexible */
+            width: 50px;
+            /* Ancho fijo para los botones */
+            height: 3px;
+            /* Altura fija para los botones */
+            margin-right: 3px;
+            /* Espacio entre botones */
+            margin-left: 3px;
+            /* Espacio entre botones */
+            text-indent: 0px;
+            /* Ajustado para evitar desplazamiento incorrecto */
+            cursor: pointer;
+            /* Cursor indica clic posible */
+            background-color: #fff;
+            /* Color de fondo */
+            background-clip: padding-box;
+            border: 0;
+            /* Sin borde */
+            border-top: 10px solid transparent;
+            /* Hace que el clic sea más fácil */
+            border-bottom: 10px solid transparent;
+            /* Hace que el clic sea más fácil */
+            opacity: .5;
+            /* Opacidad para no activo */
+            transition: opacity .6s ease;
+            /* Transición suave */
+        }
+
+        .nav-tabs .nav-link {
+            margin-right: 5px;
+            padding: 10px 15px;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #495057;
+            background-color: #fff;
+            border-color: #dee2e6 #dee2e6 #fff;
+        }
+
+        .rating-bar-container .progress {
+            height: 20px;
+            /* Ajusta la altura de las barras de progreso */
+        }
+
+        .rating-bar-container .progress-bar {
+            background-color: #ffc107;
+            /* Color principal para las barras */
+        }
+
+        .customer-feedback .card {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
+            /* Sombra ligera para las tarjetas de comentarios */
+        }
+
+
+
+        @media (max-width: 768px) {
+            .img-fluid {
+                margin-bottom: 20px;
+                /* Añade espacio entre la imagen y el texto */
+            }
+
+            .container {
+                padding: 0 15px;
+                /* Ajusta el padding en móviles para maximizar el espacio */
+            }
+
+            .carousel-indicators {
+                justify-content: flex-start;
+                /* Alinea los indicadores al inicio */
+                margin: -10px;
+                padding: 0 0 0 20px;
+                /* Ajustes de espacio */
+            }
+
+            div.col-md-4 {
+                padding-top: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            h3,
+            p {
+                margin: 5px 0;
+                /* Reduce o ajusta los márgenes para los elementos de texto */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Carousel -->
+                <div id="productCarousel" class="carousel slide carousel-thumbnails" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator01.webp"
+                                class="d-block w-100" alt="Main Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator03.webp"
+                                class="d-block w-100" alt="Second Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator04.webp"
+                                class="d-block w-100" alt="Third Image">
+                        </div>
+                    </div>
+                    <!-- Thumbnails como controles -->
+                    <div class="carousel-indicators d-flex">
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator01.webp" class="img-fluid"
+                                alt="...">
+                        </button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator03.webp" class="img-fluid"
+                                alt="...">
+                        </button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3">
+                            <img src="../images/WEBP/99123008005_HHCerastusKnightCastigator04.webp" class="img-fluid"
+                                alt="...">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Caballero Castigador Cerastus</h2>
+                <p><strong>ID:</strong> A246471</p>
+                <p><strong>Precio:</strong> 130 €</p>
+                <p><strong>Disponibilidad:</strong> En stock</p>
+                <p><strong>Marca:</strong> Games WorkShops</p>
+                <p><strong>Categoría:</strong> Modelismo</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">Añadir al carrito</button>
+                    <button class="btn btn-success" type="button">Compra Ahora</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="descripcion-tab" data-bs-toggle="tab"
+                                    data-bs-target="#descripcion" type="button" role="tab" aria-controls="descripcion"
+                                    aria-selected="true">Descripción</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="comentarios-tab" data-bs-toggle="tab"
+                                    data-bs-target="#comentarios" type="button" role="tab" aria-controls="comentarios"
+                                    aria-selected="false">Comentarios</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="descripcion" role="tabpanel"
+                                aria-labelledby="descripcion-tab">
+                                <p> Los Caballeros Cerastus son exoesqueletos sofisticados de gran tamaño y mucho más
+                                    ágiles de
+                                    los de clase Questoris, a pesar de que estos últimos son más pequeños. Las guadaña
+                                    del
+                                    Caballero Castigador siegan hordas de enemigos que, aun siendo inferiores, podrían
+                                    abrumarlo
+                                    por su superioridad numérica. Capaz de reventar formaciones de infantería en una
+                                    estruendosa
+                                    lluvia de explosiones en cadena o de partir vehículos ligeros en dos con suma
+                                    facilidad, el
+                                    Castigator es conocido por la naturaleza estoica de su espíritu máquina, y a menudo
+                                    se
+                                    confía en él para mantener la línea.</p>
+
+                                <p>Este kit de plástico multicomponente monta un Caballero Castigador Cerastus, un noble
+                                    ingenio de guerra que se enfrenta a sus enemigos desde cualquier distancia. El
+                                    Caballero
+                                    Castigador, que es más alto que sus parientes de clase Questoris, cruza el campo de
+                                    batalla
+                                    a grandes zancadas para asestar una andanada de disparos con el cañón bólter que
+                                    lleva en el
+                                    brazo. A continuación, pasa a cercenar la armadura del enemigo con su montante
+                                    Tempestad, la
+                                    cual es tan larga como una lanzadera acorazada de transporte Rhino.</p>
+
+                                <p>Esta miniatura a todo detalle es altamente personalizable; tiene articulaciones en
+                                    tobillos,
+                                    rodillas, caderas, cabeza, brazos y cintura que permiten crear una pose dinámica
+                                    completamente única. La cabeza y los brazos se montan a presión sin necesidad de
+                                    pegamento,
+                                    lo que permite cambiar su posición en plena partida. El kit incluye una variedad de
+                                    opciones
+                                    estéticas, incluidas dos diseños distintos para rodilleras y grebas y cuatro iconos
+                                    montables en el chasis, cada uno para las casas caballerescas leales, traidoras,
+                                    Mechanicum
+                                    y Questoris. También puedes montar el Caballero con una escotilla abierta para ver
+                                    el piloto
+                                    que se sienta en su interior.</p>
+
+                                <p>Este kit está compuesto de 247 piezas de plástico y viene con una peana Citadel
+                                    ovalada de
+                                    170 x 109 mm. También incluye una hoja de calcomanías Cerastus Knight Age of
+                                    Darkness, que
+                                    contiene 517 símbolos e iconos para las casas caballerescas de Horus Heresy. La
+                                    miniatura
+                                    viene sin pintar ni montar; recomendamos usar pegamento Citadel Plastic Glue y
+                                    pinturas
+                                    Citadel.</p>
+
+                                <p>Las reglas para usar esta miniatura en tus partidas de Warhammer 40,000 están
+                                    disponibles
+                                    para descargar de manera gratuita en el sitio web de Warhammer Community.</p>
+                            </div>
+                            <div class="tab-pane fade" id="comentarios" role="tabpanel"
+                                aria-labelledby="comentarios-tab">
+                                <!-- Resumen de calificaciones -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-5 text-center rounded">
+                                            <h2>4.7 <small>/ 5</small></h2>
+                                            <p>Valoraciones (934,516)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="rating-bar-container mb-3">
+                                            <div>5 stars <span class="float-end">63% (94.532)</span></div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar" style="width: 63%;"></div>
+                                            </div>
+                                            <div>4 stars <span class="float-end">24% (6.717)</span></div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-warning" style="width: 24%;"></div>
+                                            </div>
+                                            <div>3 stars <span class="float-end">0% (0)</span></div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-warning" style="width: 0%;"></div>
+                                            </div>
+                                            <div>2 stars <span class="float-end">0% (0)</span></div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-warning" style="width: 0%;"></div>
+                                            </div>
+                                            <div>1 stars <span class="float-end">0% (0)</span></div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-warning" style="width: 0%;"></div>
+                                            </div>
+                                            <!-- Repetir para 3, 2 y 1 estrella -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lista de comentarios -->
+                                <div class="customer-feedback">
+                                    <h4>Reseñas de nuestro producto</h4>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <img src="../images/JPG/logo_nobackground.png" alt="User Avatar"
+                                                        class="rounded-circle" style="width: 50px; height: 50px;">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="mt-0">Dianne Russell - Just now</h5>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Repetir para otros comentarios -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

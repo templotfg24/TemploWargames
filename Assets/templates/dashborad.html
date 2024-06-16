@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    #wrapper {
+      display: flex;
+      width: 100%;
+    }
+
+    #sidebar-wrapper {
+      min-width: 250px;
+      max-width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+    }
+
+    #sidebar-wrapper .list-group {
+      border: none;
+      border-radius: 0;
+    }
+
+    #sidebar-wrapper .list-group-item {
+      border: none;
+      border-bottom: 1px solid #f5f5f5;
+      color: #333;
+      font-weight: 500;
+    }
+
+    #sidebar-wrapper .list-group-item.active {
+      background-color: #ff4500;
+      color: #fff;
+      border: none;
+    }
+
+    #page-content-wrapper {
+      flex: 1;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card {
+      border-radius: 10px;
+    }
+
+    .pagination {
+      justify-content: center;
+    }
+
+    .pagination .page-link {
+      color: #ff4500;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: #ff4500;
+      border-color: #ff4500;
+    }
+
+    .image-preview {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .image-preview img {
+      margin: 5px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <!-- Barra de navegación lateral -->
+    <div id="sidebar-wrapper">
+      <div class="sidebar-heading text-center py-4"><i class="fas fa-user-circle fa-2x"></i></div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action active"><i class="fas fa-th-large me-2"></i> Inicio</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user me-2"></i> Cuenta</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-history me-2"></i> Historial Pedido</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-map-marker-alt me-2"></i> Donde Encontrarnos</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-shopping-cart me-2"></i> Carrito</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-heart me-2"></i> Lista Deseados</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-clipboard-list me-2"></i> Datos para pedido</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión</a>
+        <!-- Nuevos CRUDs -->
+        <a href="usuarios.html" class="list-group-item list-group-item-action"><i class="fas fa-users me-2"></i> Usuarios</a>
+        <a href="productos.html" class="list-group-item list-group-item-action"><i class="fas fa-boxes me-2"></i> Productos</a>
+        <a href="formas_pago.html" class="list-group-item list-group-item-action"><i class="fas fa-credit-card me-2"></i> Formas de Pago</a>
+        <a href="clientes.html" class="list-group-item list-group-item-action"><i class="fas fa-user-friends me-2"></i> Clientes</a>
+        <a href="proveedores.html" class="list-group-item list-group-item-action"><i class="fas fa-truck me-2"></i> Proveedores</a>
+        <a href="pedidos.html" class="list-group-item list-group-item-action"><i class="fas fa-receipt me-2"></i> Pedidos</a>
+        <a href="categorias.html" class="list-group-item list-group-item-action"><i class="fas fa-tags me-2"></i> Categorías</a>
+      </div>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="app-title mt-4">
+          <div>
+            <h1><i class="fas fa-tachometer-alt"></i> Panel de Administración</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <a href="#" class="text-decoration-none">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                  <div>
+                    <h5 class="card-title">Usuarios</h5>
+                    <p class="card-text"><b>150</b></p>
+                  </div>
+                  <i class="fas fa-users"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#" class="text-decoration-none">
+              <div class="card text-white bg-info mb-3">
+                <div class="card-body">
+                  <div>
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text"><b>200</b></p>
+                  </div>
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#" class="text-decoration-none">
+              <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                  <div>
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-text"><b>320</b></p>
+                  </div>
+                  <i class="fas fa-archive"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#" class="text-decoration-none">
+              <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                  <div>
+                    <h5 class="card-title">Pedidos</h5>
+                    <p class="card-text"><b>80</b></p>
+                  </div>
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h3 class="card-title">Últimos Pedidos</h3>
+              </div>
+              <div class="card-body">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Cliente</th>
+                      <th>Estado</th>
+                      <th class="text-end">Monto</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Juan Pérez</td>
+                      <td>Pendiente</td>
+                      <td class="text-end">$150.00</td>
+                      <td><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Maria García</td>
+                      <td>Completado</td>
+                      <td class="text-end">$200.00</td>
+                      <td><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                    </tr>
+                    <!-- Añade más filas según sea necesario -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Tipo de pagos por mes</h3>
+              </div>
+              <div class="card-body">
+                <div id="pagosMesAnio"> <!-- Gráfica de pagos por mes (Highcharts u otra librería) --> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Ventas por mes</h3>
+              </div>
+              <div class="card-body">
+                <div id="graficaMes"> <!-- Gráfica de ventas por mes (Highcharts u otra librería) --> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+    // Ejemplo de gráfico con Highcharts
+    Highcharts.chart('pagosMesAnio', {
+      chart: {
+        type: 'pie'
+      },
+      title: {
+        text: 'Ventas por tipo de pago'
+      },
+      series: [{
+        name: 'Ventas',
+        data: [
+          { name: 'Tarjeta de Crédito', y: 61.41 },
+          { name: 'PayPal', y: 11.84 },
+          { name: 'Transferencia Bancaria', y: 10.85 }
+        ]
+      }]
+    });
+
+    Highcharts.chart('graficaMes', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Ventas por Mes'
+      },
+      series: [{
+        name: 'Ventas',
+        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+      }]
+    });
+
+    Highcharts.chart('graficaAnio', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Ventas por Año'
+      },
+      series: [{
+        name: 'Ventas',
+        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+      }]
+    });
+  </script>
+</body>
+</html>

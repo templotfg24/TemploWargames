@@ -1,0 +1,28 @@
+/* order_history_view.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .order-details {
+    display: none;
+  }
+  
+  .table .order-header {
+    cursor: pointer;
+  }
+  
+  #page-content-wrapper {
+    padding-left: 250px;
+    /* Espacio para el sidebar */
+    width: calc(100% - 250px);
+    /* Ancho del contenido restando el sidebar */
+  }
+  
+  .container-fluid {
+    max-width: 100%;
+    /* Ajusta el ancho máximo del contenido */
+    margin: auto;
+    /* Centra el contenido */
+  }
+  

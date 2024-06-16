@@ -1,0 +1,35 @@
+body {
+    background-color: #f2f1ef; /* Light */
+}
+.bg-light {
+    background-color: #f2f1ef !important; /* Light */
+}
+.login-container {
+    background-color: #ffffff; /* White */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.bg-muted {
+    background-color: #F7F7F7 !important; /* Light */
+}
+.form-control {
+    color: #575757; /* Muted */
+}
+.btn-primary {
+    background-color: #FF4F11; /* Primary */
+    border-color: #FF4F11; /* Primary */
+}
+.text-muted {
+    color: #575757 !important; /* Muted */
+}
+.text-dark {
+    color: #000000 !important; /* Black */
+}
+.btn-outline-dark {
+    color: #000000 !important; /* Black */
+    border-color: #000000 !important; /* Black */
+}
+.btn-outline-dark:hover {
+    background-color: #000000 !important; /* Black */
+    color: #FFFFFF !important; /* White */
+}

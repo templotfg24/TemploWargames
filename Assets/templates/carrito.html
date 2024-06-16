@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Aplica Poppins a todo el contenido del body */
+            background-color: #f4f4f4;
+        }
+        .shopping-cart {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            width: 100px; /* Ajusta según la necesidad */
+            height: auto; /* Mantiene la proporción de la imagen */
+        }
+        .totals, .coupon {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-orange {
+            background-color: #ff5722;
+            color: white;
+        }
+        .btn-orange:hover {
+            background-color: #e64a19;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-controls button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        .remove-btn {
+            cursor: pointer;
+            color: red;
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="shopping-cart">
+                    <h4>Carrito de Compras</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartBody">
+                            <!-- Productos añadidos dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="totals">
+                    <h4>Totales del Carrito</h4>
+                    <p>Subtotal: <span id="subtotal">0€</span></p>
+                    <p>Descuento: <span id="discount">0€</span></p>
+                    <p>Gasto de envío: <span id="shipping">Gratis</span></p>
+                    <p>Total: <span id="total">0€</span></p>
+                    <button class="btn btn-orange">Proceder al pago</button>
+                </div>
+                <div class="coupon">
+                    <h4>Cupón de Tienda</h4>
+                    <input type="text" class="form-control" placeholder="Código">
+                    <button class="btn btn-orange mt-2" onclick="applyCoupon()">Canjear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let products = [
+            { id: 1, name: "Caballero Castigador...", price: 130, quantity: 2, image: "../images/WEBP/99123008005_HHCerastusKnightCastigator01.webp" },
+            { id: 2, name: "Star Wars Legion Anakin", price: 40, quantity: 1, image: "../images/WEBP/99123008005_HHCerastusKnightCastigator01.webp" }
+        ];
+
+        function updateCart() {
+            let cartBody = document.getElementById('cartBody');
+            cartBody.innerHTML = '';
+            let subtotal = 0;
+
+            products.forEach((product, index) => {
+                let productRow = `<tr>
+                    <td><button class="remove-btn" onclick="removeItem(${index})">X</button></td>
+                    <td><img src="${product.image}" class="product-image" alt="${product.name}"/> ${product.name}</td>
+                    <td>${product.price}€</td>
+                    <td>
+                        <div class="quantity-controls">
+                            <button onclick="changeQuantity('decrease', ${index})">-</button>
+                            <input type="text" value="${product.quantity}" id="quantity-${index}">
+                            <button onclick="changeQuantity('increase', ${index})">+</button>
+                        </div>
+                    </td>
+                    <td>${product.price * product.quantity}€</td>
+                </tr>`;
+                cartBody.innerHTML += productRow;
+                subtotal += product.price * product.quantity;
+            });
+
+            document.getElementById('subtotal').innerText = subtotal + '€';
+            document.getElementById('total').innerText = subtotal + '€'; // Update total if needed
+        }
+
+        function changeQuantity(action, index) {
+            if (action === 'increase') {
+                products[index].quantity++;
+            } else if (action === 'decrease' && products[index].quantity > 1) {
+                products[index].quantity--;
+            }
+            updateCart();
+        }
+
+        function removeItem(index) {
+            products.splice(index, 1);
+            updateCart();
+        }
+
+        function applyCoupon() {
+            // Implement coupon logic here
+            alert('Cupón aplicado, actualiza los totales según corresponda.');
+        }
+
+        updateCart(); // Initialize cart
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

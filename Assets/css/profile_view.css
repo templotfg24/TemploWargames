@@ -1,0 +1,45 @@
+/* profile_view.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#page-content-wrapper {
+    padding-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.container-fluid {
+    max-width: 100%;
+    margin: auto;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    border-color: #FF6600;
+    color: #FFF;
+    background-color: #FF6600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #E65C00;
+    border-color: #E65C00;
+    color: #FFF;
+}
+
+.btn-danger {
+    border-color: #FF6600;
+    color: #FFF;
+    background-color: #FF6600;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: #E65C00;
+    border-color: #E65C00;
+    color: #FFF;
+}

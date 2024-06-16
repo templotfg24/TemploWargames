@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Activación de cuenta - TemploWargames</title>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Poppins', sans-serif;
+            color: #252525;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #FF4F11;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #FF4F11;
+        }
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .content .code {
+            display: block;
+            width: max-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FF4F11;
+        }
+        .content .button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #FF4F11;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #777;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Activación de cuenta</h1>
+        </div>
+        <div class="content">
+            <h2>¡Hola!</h2>
+            <p>Gracias por registrarte en TemploWargames. Estamos emocionados de que te unas a nuestra comunidad de entusiastas de los juegos de mesa y miniaturas.</p>
+            <p>Para completar tu registro, por favor utiliza el siguiente código de activación:</p>
+            <span class="code">{{codigoActivacion}}</span>
+            <p>Tu contraseña temporal es:</p>
+            <span class="code">{{passwordTemporal}}</span>
+            <a class="button" href="{{activationLink}}">Activar Cuenta</a>
+            <p>Si no solicitaste este correo, por favor ignóralo.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2023 TemploWargames. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

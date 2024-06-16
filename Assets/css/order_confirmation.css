@@ -1,0 +1,32 @@
+/* order_confirmation.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #252525;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.confirmation-message {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.btn-orange {
+    background-color: #F24F17;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.btn-orange:hover {
+    background-color: #e64a19;
+}

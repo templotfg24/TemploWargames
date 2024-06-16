@@ -1,0 +1,109 @@
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 70px;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 20px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+
+.search-bar button.btn-search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 20px;
+    border-radius: 0 20px 20px 0;
+    background-color: #FF4F11;
+    color: #FFFFFF;
+    border: none;
+    height: 100%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown .dropdown-menu {
+    right: 0;
+}
+
+.navbar .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.navbar .dropdown-menu a {
+    white-space: nowrap;
+}
+
+.navbar .dropdown-toggle::after {
+    margin-left: .255em;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .logo, .search-bar, .user-info {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-bar {
+        order: 3;
+    }
+
+    .user-info {    
+        order: 2;
+    }
+
+    .logo {
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .btn-cart, .btn-account {
+        width: 100%;
+    }
+}

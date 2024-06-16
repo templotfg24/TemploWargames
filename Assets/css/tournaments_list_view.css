@@ -1,0 +1,78 @@
+/* tournaments_list_view.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #252525;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #252525;
+}
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    background-color: white;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+.date-badge {
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #252525;
+    color: white;
+    padding: 5px 10px;
+    position: absolute;
+    top: 180px;
+    left: 20px;
+    border-radius: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.date-picker {
+    width: 200px;
+}
+
+h2 {
+    color: #F24F17;
+}
+
+.btn-primary {
+    background-color: #F24F17;
+    border: none;
+    border-radius: 20px;
+    width: 150px;
+}

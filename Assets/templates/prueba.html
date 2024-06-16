@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Shopping Cart
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Sub-Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Caballero Castigador</td>
+                                    <td>130€</td>
+                                    <td>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button">-</button>
+                                            <input type="text" class="form-control text-center" value="2">
+                                            <button class="btn btn-outline-secondary" type="button">+</button>
+                                        </div>
+                                    </td>
+                                    <td>260€</td>
+                                </tr>
+                                <tr>
+                                    <td>Star Wars Legion Anakin</td>
+                                    <td>40€</td>
+                                    <td>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button">-</button>
+                                            <input type="text" class="form-control text-center" value="1">
+                                            <button class="btn btn-outline-secondary" type="button">+</button>
+                                        </div>
+                                    </td>
+                                    <td>40€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Card Totals
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Sub-total: 300€</li>
+                            <li class="list-group-item">Descuento: 0</li>
+                            <li class="list-group-item">Gasto de envío: Gratis</li>
+                            <li class="list-group-item"><strong>Total: 300€</strong></li>
+                        </ul>
+                        <div class="mt-3">
+                            <button class="btn btn-primary w-100">Proceder al pago</button>
+                        </div>
+                        <div class="mt-3">
+                            <label for="couponCode" class="form-label">Cupón de Tienda</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="couponCode" placeholder="Código">
+                                <button class="btn btn-outline-secondary" type="button">Canjear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

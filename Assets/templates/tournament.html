@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximos Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #252525;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 48px;
+            color: #252525;
+        }
+
+        .card {
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Transiciones para transform y sombra */
+            transform: scale(1);
+            /* Escala inicial */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            /* Escala la tarjeta al 105% de su tamaño original al hacer hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            /* Sombra más prominente al hacer hover */
+        }
+
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+            background-color: white;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+
+        .date-badge {
+            font-size: 16px;
+            font-weight: 700;
+            background-color: #252525;
+            color: white;
+            padding: 5px 10px;
+            position: absolute;
+            top: 180px;
+            left: 20px;
+            border-radius: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .date-picker {
+            width: 200px;
+        }
+
+        h2 {
+            color: #F24F17;
+        }
+
+        .btn-primary {
+            background-color: #F24F17;
+            /* Primary color for buttons */
+            border: none;
+            border-radius: 20px;
+            /* Rounded edges for cards and buttons */
+            width: 150px;
+            /* Fixed width for the button */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Próximos Eventos</h2>
+            <input type="date" class="form-control date-picker" id="dateFilter">
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="eventsContainer"></div>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary" type="button" id="loadMore">Ver más</button>
+        </div>
+    </div>
+
+    <script>
+        const events = [
+            { img: "../images/PNG/prueba.png", title: "Campaña del Sector 40k", date: "2024-06-08" },
+            { img: "../images/PNG/prueba.png", title: "Desafío del Sector 40k", date: "2024-06-10" },
+            { img: "../images/PNG/prueba.png", title: "Batalla del Sector 40k", date: "2024-06-15" },
+            { img: "../images/PNG/prueba.png", title: "Invasión del Sector 40k", date: "2024-06-20" },
+            { img: "../images/PNG/prueba.png", title: "Reconquista del Sector 40k", date: "2024-06-25" },
+            { img: "../images/PNG/prueba.png", title: "Campaña del Sector 40k", date: "2024-06-28" },
+            { img: "../images/PNG/prueba.png", title: "Batalla Final del Sector 40k", date: "2024-07-05" }
+        ];
+
+        const initialShow = 6;
+        const container = document.getElementById('eventsContainer');
+        const loadMoreButton = document.getElementById('loadMore');
+        const dateFilter = document.getElementById('dateFilter');
+
+        function displayEvents(filterDate) {
+            container.innerHTML = '';
+            const filteredEvents = events.filter(event => !filterDate || new Date(event.date) >= new Date(filterDate));
+            filteredEvents.forEach((event, index) => {
+                const eventHTML = `
+                    <div class="col ${index >= initialShow ? 'hidden' : ''}">
+                        <div class="card" onclick="window.location.href='url_to_form';" style="cursor:pointer;">
+                            <img src="${event.img}" class="card-img-top" alt="${event.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${event.title}</h5>
+                                <p class="card-text">Un evento que destaca las batallas épicas y los conflictos a nivel galáctico en el 4º milenio.</p>
+                                <p class="card-text"><small class="text-muted">${event.date}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += eventHTML;
+            });
+        }
+
+        loadMoreButton.addEventListener('click', () => {
+            const hiddenCards = document.querySelectorAll('.hidden');
+            hiddenCards.forEach(card => card.classList.remove('hidden'));
+            loadMoreButton.style.display = 'none';
+        });
+
+        dateFilter.addEventListener('change', () => {
+            displayEvents(dateFilter.value);
+        });
+
+        displayEvents(); // Initially display events without filter
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
