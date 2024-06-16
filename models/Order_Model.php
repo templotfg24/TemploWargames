@@ -166,6 +166,8 @@ class Order_Model
                         usuarios u ON p.ID_Usuario = u.ID_Usuario
                       JOIN 
                         formas_pago fp ON p.ID_FormaPago = fp.ID_FormaPago
+                     ORDER BY 
+                    p.Fecha DESC
                       WHERE 
                         p.ID_Pedido = :orderId";
             $stmt = $this->db->prepare($query);

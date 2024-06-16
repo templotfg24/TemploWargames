@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <!-- Hoja de estilos personalizada -->
-    <link rel="stylesheet" href="../Assets/css/view_login.css">
+    <link rel="stylesheet" href="../Assets/css/registre.css">
     <!-- Iconos de FontAwesome -->
     <script src="https://kit.fontawesome.com/ffec4ec2ed.js" crossorigin="anonymous"></script>
 </head>

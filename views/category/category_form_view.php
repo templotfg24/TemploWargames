@@ -23,7 +23,7 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <!-- Formulario para editar la categoría -->
-                        <form id="formCategoria" action="Category_Controller.php?action=updateCategory" method="post">
+                        <form id="formCategoria" action="Category_Controller.php?action=editCategory" method="post">
                             <!-- Campo oculto para el ID de la categoría -->
                             <input type="hidden" name="id" value="<?php echo $category['id']; ?>">
                             <!-- Campo de entrada para el nombre de la categoría -->

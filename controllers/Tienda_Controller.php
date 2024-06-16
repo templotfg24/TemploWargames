@@ -96,15 +96,15 @@ class TiendaController
     public function inscripcionTorneo()
     {
         $tournamentModel = new Tournament_Model();
-        $tournamentId = Utils::limpiar_datos($_GET['id']);
+        $tournamentId = $_GET['id'];
         $tournament = $tournamentModel->getTournamentById($tournamentId);
     
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userId = $_SESSION['user_id'];
             $email = $_SESSION['email'];
-            $applicationId = Utils::limpiar_datos($_POST['applicationId']);
-            $phoneCode = Utils::limpiar_datos($_POST['phoneCode']);
-            $phoneNumber = Utils::limpiar_datos($_POST['phoneNumber']);
+            $applicationId = htmlspecialchars($_POST['applicationId']);
+            $phoneCode = htmlspecialchars($_POST['phoneCode']);
+            $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
             $fullPhoneNumber = $phoneCode . $phoneNumber;
     
             $data = [

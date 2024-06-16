@@ -6,13 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Productos</title>
-    
+
     <!-- Enlaces a CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Assets/css/menu_main.css">
     <link rel="stylesheet" href="../Assets/css/store_all_Products_view.css">
+    <style>
+        .btn-primary:disabled {
+            background-color: #FF6600;
+            border-color: #FF6600;
+            color: #FFF;
+            opacity: 0.65;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,19 +33,19 @@
                 <?php foreach ($categories as $category) : ?>
                     <label><input type="radio" name="category" value="<?php echo $category['id']; ?>"> <?php echo $category['name']; ?></label><br>
                 <?php endforeach; ?>
-                
+
                 <h3>Subcategorías</h3>
                 <!-- Filtro de subcategorías -->
                 <select id="subcategoryFilter" class="form-select">
                     <option value="">Selecciona una subcategoría</option>
                 </select>
-                
+
                 <h3>Rango de Precio</h3>
                 <!-- Filtro de rango de precio -->
                 <input type="number" class="form-control mb-2" id="minPrice" placeholder="Precio Mínimo">
                 <input type="number" class="form-control" id="maxPrice" placeholder="Precio Máximo">
             </aside>
-            
+
             <div class="col-md-9">
                 <div class="row" id="productContainer">
                     <!-- Listado de productos -->
@@ -51,14 +59,14 @@
                                     <div class="price"><?php echo $producto['Precio']; ?> €</div>
                                     <div class="card-buttons">
                                         <a href="../controllers/Tienda_Controller.php?action=viewProductDetail&id=<?php echo $producto['ID_Producto']; ?>" class="btn btn-primary">Ver más</a>
-                                        <button class="btn btn-primary add-to-cart" data-product-id="<?php echo $producto['ID_Producto']; ?>" data-product-name="<?php echo $producto['Nombre']; ?>" data-product-price="<?php echo $producto['Precio']; ?>" data-product-image="<?php echo $producto['imagen1']; ?>">Añadir al carrito</button>
+                                        <button class="btn btn-primary add-to-cart" data-product-id="<?php echo $producto['ID_Producto']; ?>" data-product-name="<?php echo $producto['Nombre']; ?>" data-product-price="<?php echo $producto['Precio']; ?>" data-product-image="<?php echo $producto['imagen1']; ?>" <?php echo ($producto['Stock'] <= 0) ? 'disabled' : ''; ?>>Añadir al carrito</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                
+
                 <!-- Paginación -->
                 <nav aria-label="Page navigation">
                     <ul class="pagination">

@@ -62,7 +62,7 @@ class Category_Model {
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    }
+    }    
 
     // Eliminar una categoría por su ID
     public function deleteCategory($categoryId) {

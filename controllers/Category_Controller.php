@@ -39,28 +39,21 @@ class Category_Controller {
     }
 
     public function editCategory() {
-        $role = $_SESSION['rol'];
+        $role =  $_SESSION['rol'];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['id']) && isset($_POST['category_name'])) {
-                $categoryModel = new Category_Model();
-                $id = Utils::limpiar_datos($_POST['id']);
-                $name = Utils::limpiar_datos($_POST['category_name']);
-                $categoryModel->updateCategory($id, $name);
-                header('Location: Category_Controller.php?action=listCategories');
-            } else {
-                echo 'Todos los campos son obligatorios';
-            }
+            $categoryModel = new Category_Model();
+            $id = Utils::limpiar_datos($_POST['id']);
+            $name = Utils::limpiar_datos($_POST['category_name']);
+            $categoryModel->updateCategory($id, $name);
+            header('Location: Category_Controller.php?action=listCategories');
         } else {
-            if (isset($_GET['id'])) {
-                $id = Utils::limpiar_datos($_GET['id']);
-                $categoryModel = new Category_Model();
-                $category = $categoryModel->getCategoryById($id);
-                require_once '../views/category/category_form_view.php';
-            } else {
-                echo 'ID de categoría no especificado';
-            }
+            $id = Utils::limpiar_datos($_GET['id']);
+            $categoryModel = new Category_Model();
+            $category = $categoryModel->getCategoryById($id);
+            require_once '../views/category/category_form_view.php';
         }
     }
+    
 
     public function deleteCategory() {
         if (isset($_GET['id'])) {

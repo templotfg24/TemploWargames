@@ -19,7 +19,8 @@ class AuthController {
                 if ($user && password_verify($password, $user['Password'])) {
                     if ($user['Activado']) {
                         if ($user['Estado'] == 'baneado') {
-                            echo 'Tu cuenta está baneada. Contacta con el administrador para más información.';
+                            echo "<script>alert('Tu cuenta está baneada. Contacta con el administrador para más información.');</script>";
+                            require_once '../views/login/login_views.php';
                             return;
                         }
 
@@ -50,13 +51,16 @@ class AuthController {
                                 break;
                         }
                     } else {
-                        echo 'Tu cuenta aún no ha sido activada.';
+                        echo "<script>alert('Tu cuenta aún no ha sido activada.');</script>";
+                        require_once '../views/login/login_views.php';
                     }
                 } else {
-                    echo 'Correo electrónico o contraseña incorrectos';
+                    echo "<script>alert('Correo electrónico o contraseña incorrectos');</script>";
+                    require_once '../views/login/login_views.php';
                 }
             } else {
-                echo 'Todos los campos son obligatorios';
+                echo "<script>alert('Todos los campos son obligatorios');</script>";
+                require_once '../views/login/login_views.php';
             }
         } else {
             require_once '../views/login/login_views.php';
@@ -69,58 +73,58 @@ class AuthController {
 
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['direccion']) && isset($_POST['telefono']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
+            if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['direccion']) && isset($_POST['telefono']) && isset($_POST['email']) && isset($_POST['password'])) {
                 $nombre = Utils::limpiar_datos($_POST['nombre']);
                 $apellido = Utils::limpiar_datos($_POST['apellido']);
                 $direccion = Utils::limpiar_datos($_POST['direccion']);
                 $telefono = Utils::limpiar_datos($_POST['telefono']);
                 $email = Utils::limpiar_datos($_POST['email']);
                 $password = $_POST['password'];
-                $confirmPassword = $_POST['confirm_password'];
-
+                $imagen_perfil = isset($_FILES['imagen_perfil']) ? $_FILES['imagen_perfil']['name'] : null;
+    
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    echo 'Correo electrónico no válido';
+                    echo "<script>alert('Correo electrónico no válido');</script>";
+                    require_once '../views/login/register_views.php';
                     return;
                 }
-
-                if ($password !== $confirmPassword) {
-                    echo 'Las contraseñas no coinciden';
-                    return;
-                }
-
+    
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $codigo_activacion = Utils::generar_codigo_activacion();
-                $imagen_perfil = isset($_FILES['imagen_perfil']) ? $_FILES['imagen_perfil']['name'] : null;
-
+    
                 // Subir imagen de perfil si existe
                 if ($imagen_perfil) {
                     $target_dir = "../Assets/images/uploads/";
                     $target_file = $target_dir . basename($imagen_perfil);
                     move_uploaded_file($_FILES['imagen_perfil']['tmp_name'], $target_file);
                 }
-
+    
                 $userModel = new User_Model();
-
+    
                 // Verificar si el correo electrónico ya existe
                 if ($userModel->emailExists($email)) {
-                    echo 'Error: El correo electrónico ya está registrado.';
+                    echo "<script>alert('Error: El correo electrónico ya está registrado.');</script>";
+                    require_once '../views/login/register_views.php';
                     return;
                 }
-
+    
                 $userModel->createUser($nombre, $apellido, $direccion, $telefono, $email, $hashedPassword, $codigo_activacion, $imagen_perfil);
                 
                 if (Utils::enviarCorreoActivacion($email, $codigo_activacion)) {
-                    echo 'Registro exitoso. Por favor, revisa tu correo electrónico para activar tu cuenta.';
+                    echo "<script>alert('Registro exitoso. Por favor, revisa tu correo electrónico para activar tu cuenta.');</script>";
+                    require_once '../views/login/login_views.php';
                 } else {
-                    echo 'Error al enviar el correo de activación.';
+                    echo "<script>alert('Error al enviar el correo de activación.');</script>";
+                    require_once '../views/login/register_views.php';
                 }
             } else {
-                echo 'Todos los campos son obligatorios';
+                echo "<script>alert('Todos los campos son obligatorios');</script>";
+                require_once '../views/login/register_views.php';
             }
         } else {
             require_once '../views/login/register_views.php';
         }
     }
+    
 
     public function forgotPassword() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -128,7 +132,8 @@ class AuthController {
                 $email = Utils::limpiar_datos($_POST['email']);
 
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    echo 'Correo electrónico no válido';
+                    echo "<script>alert('Correo electrónico no válido');</script>";
+                    header('Location: ../public/index.php');
                     return;
                 }
 
@@ -140,15 +145,19 @@ class AuthController {
                     $userModel->setPasswordResetToken($user['ID_Usuario'], $resetToken);
                     
                     if (Utils::enviarCorreoRecuperacion($email, $resetToken)) {
-                        echo 'Correo de recuperación enviado. Por favor, revisa tu correo electrónico.';
+                        echo "<script>alert('Correo de recuperación enviado. Por favor, revisa tu correo electrónico.');</script>";
+                        require_once '../views/login/login_views.php';
                     } else {
-                        echo 'Error al enviar el correo de recuperación.';
+                        echo "<script>alert('Error al enviar el correo de recuperación.');</script>";
+                        require_once '../views/login/login_views.php';
                     }
                 } else {
-                    echo 'Correo electrónico no encontrado.';
+                    echo "<script>alert('Correo electrónico no encontrado.');</script>";
+                    require_once '../views/login/login_views.php';
                 }
             } else {
-                echo 'El campo de correo electrónico es obligatorio';
+                echo "<script>alert('El campo de correo electrónico es obligatorio');</script>";
+                require_once '../views/login/forgot_password_view.php';
             }
         } else {
             require_once '../views/login/forgot_password_view.php';
@@ -163,7 +172,8 @@ class AuthController {
                 $confirmPassword = $_POST['confirm_password'];
 
                 if ($newPassword !== $confirmPassword) {
-                    echo 'Las nuevas contraseñas no coinciden.';
+                    echo "<script>alert('Las nuevas contraseñas no coinciden.');</script>";
+                    require_once '../views/login/reset_password_view.php';
                     return;
                 }
 
@@ -176,10 +186,12 @@ class AuthController {
                     $userModel->clearPasswordResetToken($user['ID_Usuario']);
                     require_once '../views/login/login_views.php';
                 } else {
-                    echo 'Token de recuperación inválido o expirado.';
+                    echo "<script>alert('Token de recuperación inválido o expirado.');</script>";
+                    require_once '../views/login/reset_password_view.php';
                 }
             } else {
-                echo 'Todos los campos son obligatorios';
+                echo "<script>alert('Todos los campos son obligatorios');</script>";
+                require_once '../views/login/reset_password_view.php';
             }
         } else {
             $token = isset($_GET['token']) ? Utils::limpiar_datos($_GET['token']) : '';

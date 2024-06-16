@@ -67,6 +67,12 @@ body {
     border-color: #FF6600;
     color: #FFF;
 }
+.btn-primary:disabled {
+    background-color: #FF6600;
+    border-color: #FF6600;
+    color: #FFF;
+    opacity: 0.65;
+}
 
 .btn-outline-primary {
     border-color: #FF6600;
