@@ -34,9 +34,12 @@ if (isset($_SESSION['user_id'])) {
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="../public/index.php">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../controllers/Tienda_Controller.php?action=listTournaments">Torneos</a>
-                </li>
+                <?php if (isset($_SESSION['user_id'])) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../controllers/Tienda_Controller.php?action=listTournaments">Torneos</a>
+                    </li>
+                <?php endif; ?>
+
                 <!-- Enlace a la página de contacto -->
                 <li class="nav-item">
                     <a class="nav-link" href="../controllers/Contact_Controller.php?action=contact">Contacto</a>
